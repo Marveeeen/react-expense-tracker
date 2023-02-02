@@ -3,7 +3,7 @@ import ExpenseItem from "./ExpenseItem";
 
 import "./styles.css";
 
-function Expenses({ expenses }) {
+const Expenses = ({ expenses }) => {
   return (
     <Card className="expenses">
       {expenses.map((expense) => (
@@ -16,6 +16,6 @@ function Expenses({ expenses }) {
       ))}
     </Card>
   );
-}
+};
 
 export default Expenses;

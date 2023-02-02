@@ -1,4 +1,4 @@
-function ExpenseDescription({ title, amount }) {
+const ExpenseDescription ({ title, amount }) => {
   return (
     <div className="expense-item__description">
       <h2>{title}</h2>

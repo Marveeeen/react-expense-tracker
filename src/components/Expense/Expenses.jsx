@@ -1,10 +1,11 @@
+import Card from "../../layouts/Card";
 import ExpenseItem from "./ExpenseItem";
 
 import "./styles.css";
 
 function Expenses({ expenses }) {
   return (
-    <div className="expenses">
+    <Card className="expenses">
       {expenses.map((expense) => (
         <ExpenseItem
           key={expense.id}
@@ -13,7 +14,7 @@ function Expenses({ expenses }) {
           date={expense.date}
         />
       ))}
-    </div>
+    </Card>
   );
 }
 

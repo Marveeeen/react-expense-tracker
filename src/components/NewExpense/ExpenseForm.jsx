@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ onSaveData }) => {
   const [formData, setFormData] = useState({
-    title: '',
-    amount: '',
-    date: ''
+    title: "",
+    amount: "",
+    date: "",
   });
 
-  const onChangeHandler = (e) => {
+  const changeHandler = (e) => {
     const keyName = e.target.name;
     const value = e.target.value;
 
@@ -16,8 +16,18 @@ const ExpenseForm = () => {
     });
   };
 
+  const resetFormData = () => {
+    setFormData({ title: "", amount: "", date: "" });
+  };
+
+  const submitFormDataHandler = (e) => {
+    e.preventDefault();
+    onSaveData(formData);
+    resetFormData();
+  };
+
   return (
-    <form>
+    <form onSubmit={submitFormDataHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label htmlFor="title">Title</label>
@@ -26,7 +36,7 @@ const ExpenseForm = () => {
             name="title"
             id="title"
             value={formData.title}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
             required
           />
         </div>
@@ -39,7 +49,7 @@ const ExpenseForm = () => {
             min="0.01"
             step="0.01"
             value={formData.amount}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
           />
         </div>
         <div className="new-expense__control">
@@ -51,7 +61,7 @@ const ExpenseForm = () => {
             min="2019-01-01"
             max="2025-12-31"
             value={formData.date}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
           />
         </div>
       </div>

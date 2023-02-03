@@ -5,10 +5,21 @@ import ExpenseForm from "./ExpenseForm";
 
 import "./styles.css";
 
-const NewExpense = () => {
+const NewExpense = ({ onAddExpense }) => {
+  const saveExpenseDataHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData,
+      id: Math.random(),
+    };
+
+    expenseData.date = new Date(expenseData.date);
+
+    onAddExpense(expenseData);
+  };
+
   return (
     <Card className="new-expense">
-      <ExpenseForm />
+      <ExpenseForm onSaveData={saveExpenseDataHandler} />
     </Card>
   );
 };

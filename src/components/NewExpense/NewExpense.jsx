@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import Card from "../../layouts/Card";
 
 import ExpenseForm from "./ExpenseForm";
-import ExpenseModal from "./ExpenseModal";
 
 import "./styles.css";
 
-const NewExpense = ({ onAddExpense, isModalOpen, onModalChange }) => {
+const NewExpense = ({ onAddExpense }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const saveExpenseDataHandler = (enteredExpenseData) => {
@@ -29,10 +28,6 @@ const NewExpense = ({ onAddExpense, isModalOpen, onModalChange }) => {
     setIsEditing(false);
   };
 
-  const closeModalHandler = () => {
-    onModalChange(false);
-  };
-
   let content = <button onClick={startEdittingHandler}>Add New Expense</button>;
 
   if (isEditing) {
@@ -44,12 +39,7 @@ const NewExpense = ({ onAddExpense, isModalOpen, onModalChange }) => {
     );
   }
 
-  return (
-    <Card className="new-expense">
-      <ExpenseModal isOpen={isModalOpen} onCloseModal={closeModalHandler} />
-      {content}
-    </Card>
-  );
+  return <Card className="new-expense">{content}</Card>;
 };
 
 export default NewExpense;

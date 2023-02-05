@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Expenses from "./components/Expense";
+import Modal from "./components/Modal/Modal";
 import NewExpense from "./components/NewExpense";
 
 import { processExpensesJSON } from "./utils/helperFunctions";
@@ -8,6 +9,8 @@ import { processExpensesJSON } from "./utils/helperFunctions";
 const App = () => {
   const [expenses, setExpenses] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [expenseId, setExpenseId] = useState("");
+
   useEffect(() => {
     const localExpensesJSON = localStorage.getItem("expenses");
     if (localExpensesJSON) {
@@ -16,24 +19,42 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (expenses.length > 0) {
+      localStorage.setItem("expenses", JSON.stringify(expenses));
+    }
+  }, [expenses]);
+
   const addExpenseHandler = (newExpense) => {
     const newExpenses = [...expenses, newExpense];
-    localStorage.setItem("expenses", JSON.stringify(newExpenses));
-    setExpenses((prevExpense) => [...prevExpense, newExpense]);
+    setExpenses(newExpenses);
   };
 
-  const modalChangeHandler = (isModalOpen) => {
-    setIsModalOpen(isModalOpen);
+  const removeExpenseHandler = () => {
+    const newExpenses = expenses.filter((expense) => expense.id !== expenseId);
+    setExpenses(newExpenses);
+    closeModalHandler();
+  };
+
+  const openModalHandler = (expenseId) => {
+    setExpenseId(expenseId);
+    setIsModalOpen(true);
+  };
+
+  const closeModalHandler = () => {
+    setExpenseId("");
+    setIsModalOpen(false);
   };
 
   return (
     <div className="App">
-      <NewExpense
-        onAddExpense={addExpenseHandler}
-        isModalOpen={isModalOpen}
-        onModalChange={modalChangeHandler}
+      <Modal
+        isOpen={isModalOpen}
+        onCloseModal={closeModalHandler}
+        onRemoveExpense={removeExpenseHandler}
       />
-      <Expenses expenses={expenses} onModalChange={modalChangeHandler} />
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses expenses={expenses} onOpenModal={openModalHandler} />
     </div>
   );
 };

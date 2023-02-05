@@ -6,7 +6,7 @@ import ExpensesChart from "./ExpensesChart";
 
 import "./styles.css";
 
-const Expenses = ({ expenses, onModalChange }) => {
+const Expenses = ({ expenses, onOpenModal }) => {
   const [filteredYear, setFilteredYear] = useState(2019);
 
   const filteredExpenses = expenses.filter(
@@ -17,10 +17,6 @@ const Expenses = ({ expenses, onModalChange }) => {
     setFilteredYear(Number(selectedYear));
   };
 
-  const openModalHandler = () => {
-    onModalChange(true);
-  };
-
   return (
     <Card className="expenses">
       <ExpenseFilter
@@ -28,7 +24,7 @@ const Expenses = ({ expenses, onModalChange }) => {
         onChangeFilter={filterChangeHandler}
       />
       <ExpensesChart expenses={filteredExpenses} />
-      <ExpenseList expenses={filteredExpenses} onOpenModal={openModalHandler} />
+      <ExpenseList expenses={filteredExpenses} onOpenModal={onOpenModal} />
     </Card>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../../layouts/Card";
 
 import ExpenseForm from "./ExpenseForm";
@@ -6,6 +6,8 @@ import ExpenseForm from "./ExpenseForm";
 import "./styles.css";
 
 const NewExpense = ({ onAddExpense }) => {
+  const [isEditing, setIsEditing] = useState(false);
+
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
       ...enteredExpenseData,
@@ -15,13 +17,29 @@ const NewExpense = ({ onAddExpense }) => {
     expenseData.date = new Date(expenseData.date);
 
     onAddExpense(expenseData);
+    setIsEditing(false)
   };
 
-  return (
-    <Card className="new-expense">
-      <ExpenseForm onSaveData={saveExpenseDataHandler} />
-    </Card>
-  );
+  const startEdittingHandler = () => {
+    setIsEditing(true);
+  };
+
+  const stopEditingHandler = () => {
+    setIsEditing(false)
+  }
+
+  let content = <button className="new-expense__button" onClick={startEdittingHandler}>Add New Expense</button>;
+
+  if (isEditing) {
+    content = (
+      <ExpenseForm
+        onSaveData={saveExpenseDataHandler}
+        onCancel={stopEditingHandler}
+      />
+    );
+  }
+
+  return <Card className="new-expense">{content}</Card>;
 };
 
 export default NewExpense;

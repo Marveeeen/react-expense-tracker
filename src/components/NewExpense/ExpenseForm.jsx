@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ExpenseForm = ({ onSaveData }) => {
+const ExpenseForm = ({ onSaveData, onCancel }) => {
   const [formData, setFormData] = useState({
     title: "",
     amount: "",
@@ -67,6 +67,9 @@ const ExpenseForm = ({ onSaveData }) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add expense</button>
       </div>
     </form>

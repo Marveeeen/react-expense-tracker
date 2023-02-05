@@ -62,6 +62,7 @@ const ExpenseForm = ({ onSaveData }) => {
             max="2025-12-31"
             value={formData.date}
             onChange={changeHandler}
+            required
           />
         </div>
       </div>

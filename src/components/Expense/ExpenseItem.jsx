@@ -4,10 +4,12 @@ import ExpenseDescription from "./ExpenseDescription";
 
 const ExpenseItem = ({ date, title, amount }) => {
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={date} />
-      <ExpenseDescription title={title} amount={amount} />
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={date} />
+        <ExpenseDescription title={title} amount={amount} />
+      </Card>
+    </li>
   );
 };
 

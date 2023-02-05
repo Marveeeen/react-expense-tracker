@@ -2,9 +2,9 @@ import Card from "../../layouts/Card";
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDescription from "./ExpenseDescription";
 
-const ExpenseItem = ({ date, title, amount }) => {
+const ExpenseItem = ({ date, title, amount, onOpenModal }) => {
   return (
-    <li>
+    <li onDoubleClick={onOpenModal}>
       <Card className="expense-item">
         <ExpenseDate date={date} />
         <ExpenseDescription title={title} amount={amount} />

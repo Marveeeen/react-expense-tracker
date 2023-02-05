@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import Card from "../../layouts/Card";
 
 import ExpenseForm from "./ExpenseForm";
+import ExpenseModal from "./ExpenseModal";
 
 import "./styles.css";
 
-const NewExpense = ({ onAddExpense }) => {
+const NewExpense = ({ onAddExpense, isModalOpen, onModalChange }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const saveExpenseDataHandler = (enteredExpenseData) => {
@@ -17,7 +18,7 @@ const NewExpense = ({ onAddExpense }) => {
     expenseData.date = new Date(expenseData.date);
 
     onAddExpense(expenseData);
-    setIsEditing(false)
+    setIsEditing(false);
   };
 
   const startEdittingHandler = () => {
@@ -25,10 +26,14 @@ const NewExpense = ({ onAddExpense }) => {
   };
 
   const stopEditingHandler = () => {
-    setIsEditing(false)
-  }
+    setIsEditing(false);
+  };
 
-  let content = <button className="new-expense__button" onClick={startEdittingHandler}>Add New Expense</button>;
+  const closeModalHandler = () => {
+    onModalChange(false);
+  };
+
+  let content = <button onClick={startEdittingHandler}>Add New Expense</button>;
 
   if (isEditing) {
     content = (
@@ -39,7 +44,12 @@ const NewExpense = ({ onAddExpense }) => {
     );
   }
 
-  return <Card className="new-expense">{content}</Card>;
+  return (
+    <Card className="new-expense">
+      <ExpenseModal isOpen={isModalOpen} onCloseModal={closeModalHandler} />
+      {content}
+    </Card>
+  );
 };
 
 export default NewExpense;

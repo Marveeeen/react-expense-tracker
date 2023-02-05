@@ -7,7 +7,7 @@ import { processExpensesJSON } from "./utils/helperFunctions";
 
 const App = () => {
   const [expenses, setExpenses] = useState([]);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
     const localExpensesJSON = localStorage.getItem("expenses");
     if (localExpensesJSON) {
@@ -22,10 +22,18 @@ const App = () => {
     setExpenses((prevExpense) => [...prevExpense, newExpense]);
   };
 
+  const modalChangeHandler = (isModalOpen) => {
+    setIsModalOpen(isModalOpen);
+  };
+
   return (
     <div className="App">
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses expenses={expenses} />
+      <NewExpense
+        onAddExpense={addExpenseHandler}
+        isModalOpen={isModalOpen}
+        onModalChange={modalChangeHandler}
+      />
+      <Expenses expenses={expenses} onModalChange={modalChangeHandler} />
     </div>
   );
 };

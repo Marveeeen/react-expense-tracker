@@ -1,13 +1,15 @@
 import React from "react";
 
+import styles from "./ExpenseFilter.module.css";
+
 const ExpenseFilter = ({ selected, onChangeFilter }) => {
   const dropdownChangeHandler = (e) => {
     onChangeFilter(e.target.value);
   };
 
   return (
-    <div className="expense-filter">
-      <div className="expense-filter__control">
+    <div className={styles["expense-filter"]}>
+      <div className={styles["expense-filter__control"]}>
         <label htmlFor="filterYear">Filter by year</label>
         <select
           id="filterYear"

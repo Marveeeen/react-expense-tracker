@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Card from "../../layouts/Card";
-import ExpenseFilter from "./ExpenseFilter";
-import ExpenseList from "./ExpenseList";
-import ExpensesChart from "./ExpensesChart";
+import Card from "../../../layouts/Card";
+import ExpenseFilter from "../ExpenseFilter";
+import ExpenseList from "../ExpenseList";
+import ExpensesChart from "../ExpensesChart";
 
-import "./styles.css";
+import styles from "./Expenses.module.css";
 
 const Expenses = ({ expenses, onOpenModal }) => {
   const [filteredYear, setFilteredYear] = useState(2019);
@@ -18,7 +18,7 @@ const Expenses = ({ expenses, onOpenModal }) => {
   };
 
   return (
-    <Card className="expenses">
+    <Card className={styles.expenses}>
       <ExpenseFilter
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}

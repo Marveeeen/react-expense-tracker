@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Expenses from "./components/Expense";
+import { Expenses } from "./components/Expense";
 import Modal from "./components/Modal/Modal";
 import NewExpense from "./components/NewExpense";
 

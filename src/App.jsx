@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { Expenses } from "./components/Expense";
-import Modal from "./components/Modal/Modal";
+import Modal from "./components/Modal";
 import NewExpense from "./components/NewExpense";
 
 import { processExpensesJSON } from "./utils/helperFunctions";

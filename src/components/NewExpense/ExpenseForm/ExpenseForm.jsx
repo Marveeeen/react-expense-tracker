@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import styles from "./ExpenseForm.module.css";
+
 const ExpenseForm = ({ onSaveData, onCancel }) => {
   const [formData, setFormData] = useState({
     title: "",
@@ -28,8 +30,8 @@ const ExpenseForm = ({ onSaveData, onCancel }) => {
 
   return (
     <form onSubmit={submitFormDataHandler}>
-      <div className="new-expense__controls">
-        <div className="new-expense__control">
+      <div className={styles["new-expense__controls"]}>
+        <div className={styles["new-expense__control"]}>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -40,7 +42,7 @@ const ExpenseForm = ({ onSaveData, onCancel }) => {
             required
           />
         </div>
-        <div className="new-expense__control">
+        <div className={styles["new-expense__control"]}>
           <label htmlFor="amount">Amount</label>
           <input
             type="number"
@@ -52,7 +54,7 @@ const ExpenseForm = ({ onSaveData, onCancel }) => {
             onChange={changeHandler}
           />
         </div>
-        <div className="new-expense__control">
+        <div className={styles["new-expense__control"]}>
           <label htmlFor="date">Date</label>
           <input
             type="date"
@@ -66,7 +68,7 @@ const ExpenseForm = ({ onSaveData, onCancel }) => {
           />
         </div>
       </div>
-      <div className="new-expense__actions">
+      <div className={styles["new-expense__actions"]}>
         <button type="button" onClick={onCancel}>
           Cancel
         </button>

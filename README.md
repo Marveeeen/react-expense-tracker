@@ -18,4 +18,6 @@ Create starter folder using vite and react for front-end
 - Lifting the state up
 - Modal
 - Higher order of components use for style
+- Module css for separation of concerns
+- Portal for backdrop and modal
 

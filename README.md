@@ -33,6 +33,6 @@ To run this app locally, follow these steps:
   ```
 3. Start the development server:
   ```
-  npm run de
+  npm run dev
   ```
 4. Open your browser to http://127.0.0.1:5173/ to view the app.

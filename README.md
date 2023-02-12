@@ -9,9 +9,9 @@ Simple react app that allows user to add expense, filter expense, show chart and
 ## How It's Made:
 
 **Tech used:** Vite, React
-Create starter folder using vite and react for front-end
+A simple expense tracker built with [Vite](https://github.com/vitejs/vite) for initial folder structure and [React](https://github.com/facebook/react) for front-end. 
 
-## Lessons Learned:
+## Take Aways:
 
 - Proper seperation of components
 - Rendering & conditional rendering
@@ -21,3 +21,18 @@ Create starter folder using vite and react for front-end
 - Module css for separation of concerns
 - Portal for backdrop and modal
 
+## Getting started
+To run this app locally, follow these steps:
+1. Clone the retory:
+  ```
+  git clone https://github.com/Marveeeen/react-expense-tracker.git
+  ```
+2. Install dependencies:
+  ```
+  npm install
+  ```
+3. Start the development server:
+  ```
+  npm run de
+  ```
+4. Open your browser to http://127.0.0.1:5173/ to view the app.

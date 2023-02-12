@@ -35,4 +35,4 @@ To run this app locally, follow these steps:
   ```
   npm run dev
   ```
-4. Open your browser to http://127.0.0.1:5173/ to view the app.
+4. Open your browser to http://127.0.0.1:5173/react-expense-tracker/ to view the app.
